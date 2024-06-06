@@ -5,10 +5,6 @@ class Document:
     def add_page(self, content: str):
         self.__pages.append(content)
 
-    @property
-    def content(self):
-        return self.__content
-
     def print_document(self, printer):
         for page in self.__pages:
             printer.print_page(page)
