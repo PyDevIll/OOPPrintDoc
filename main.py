@@ -1,40 +1,45 @@
 class Document:
-    def __init__(self, text):
-        self.__content = text
+    def __init__(self):
+        self.__pages = []
+
+    def add_page(self, content: str):
+        self.__pages.append(content)
 
     @property
     def content(self):
         return self.__content
 
     def print_document(self, printer):
-        printer.print_page(self)
+        for page in self.__pages:
+            printer.print_page(page)
 
 
 class InkjetPrinter:
-    @staticmethod
-    def print_page(doc):
-        print("Inkjet printer outputs:")
-        print(doc.content)
-        print('Printed with black ink')
+    def print_page(self, page_txt: str):
+        print("Inkjet printer uses black ink to print:")
+        print(page_txt+"\n")
 
 
 class LaserPrinter:
-    @staticmethod
-    def print_page(doc):
-        print("Laser printer outputs:")
-        print(doc.content)
-        print('Printed with black toner')
+    def print_page(self, page_txt: str):
+        print("Laser printer uses black toner to print:")
+        print(page_txt+"\n")
 
 
 def main():
-    some_doc = Document("Some text on a several pages")
+    some_doc = Document()
+    some_doc.add_page("-Title Page-")
+    some_doc.add_page("Last page")
+
+    ink_printer = InkjetPrinter()
+    laser_printer = LaserPrinter()
 
     print("Launching inkjet printer...")
-    some_doc.print_document(InkjetPrinter)
+    some_doc.print_document(ink_printer)
 
     print()
     print("Launching laser printer...")
-    some_doc.print_document(LaserPrinter)
+    some_doc.print_document(laser_printer)
 
 
 if __name__ == "__main__":
