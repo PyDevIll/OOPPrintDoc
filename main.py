@@ -10,16 +10,33 @@ class Document:
             printer.print_page(page)
 
 
-class InkjetPrinter:
-    def print_page(self, page_txt: str):
-        print("Inkjet printer uses black ink to print:")
+class Printer:
+    __consumable = ''
+    __kind = ''
+
+    def __init__(self, kind, consumable):
+        self.__kind = kind
+        self.__consumable = consumable
+
+    def print_page(self, page_txt:str):
+        print(self.__kind + " printer uses " + self.__consumable + " to print:")
         print(page_txt+"\n")
 
 
-class LaserPrinter:
-    def print_page(self, page_txt: str):
-        print("Laser printer uses black toner to print:")
-        print(page_txt+"\n")
+class InkjetPrinter(Printer):
+    def __init__(self):
+        super().__init__("Inkjet", "black ink")
+
+    def print_page(self, page_txt:str):
+        super().print_page(page_txt)
+
+
+class LaserPrinter(Printer):
+    def __init__(self):
+        super().__init__("Laser", "black toner")
+
+    def print_page(self, page_txt:str):
+        super().print_page(page_txt)
 
 
 def main():
