@@ -15,24 +15,32 @@ class Document:
 
 
 class Printer:
-    def __init__(self):
-        __consumable = ''
-        __kind = ''
+    __consumable = ''
+    __kind = ''
+
+    def __init__(self, kind, consumable):
+        self.__kind = kind
+        self.__consumable = consumable
 
     def print_page(self, page_txt:str):
-        print(__kind + " printer uses " + __consumable + " to print:")
+        print(self.__kind + " printer uses " + self.__consumable + " to print:")
         print(page_txt+"\n")
 
 
 class InkjetPrinter(Printer):
     def __init__(self):
-        self.__kind = "Inkjet"
-        self.__consumable = "black ink"
+        super().__init__("Inkjet", "black ink")
 
-class LaserPrinter:
+    def print_page(self, page_txt:str):
+        super().print_page(page_txt)
+
+
+class LaserPrinter(Printer):
     def __init__(self):
-        self.__kind = "Laser"
-        self.__consumable = "black toner"
+        super().__init__("Laser", "black toner")
+
+    def print_page(self, page_txt:str):
+        super().print_page(page_txt)
 
 
 def main():
