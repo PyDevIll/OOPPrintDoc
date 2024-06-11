@@ -19,8 +19,7 @@ class Printer:
         self.__consumable = consumable
 
     def print_page(self, page_txt:str):
-        print(self.__kind + " printer uses " + self.__consumable + " to print:")
-        print(page_txt+"\n")
+        pass
 
 
 class InkjetPrinter(Printer):
@@ -28,7 +27,8 @@ class InkjetPrinter(Printer):
         super().__init__("Inkjet", "black ink")
 
     def print_page(self, page_txt:str):
-        super().print_page(page_txt)
+        print(self.__kind + " printer uses " + self.__consumable + " to print:")
+        print(page_txt+"\n")
 
 
 class LaserPrinter(Printer):
@@ -36,8 +36,8 @@ class LaserPrinter(Printer):
         super().__init__("Laser", "black toner")
 
     def print_page(self, page_txt:str):
-        super().print_page(page_txt)
-
+        print(self.__kind + " printer uses " + self.__consumable + " to print:")
+        print(page_txt+"\n")
 
 def main():
     some_doc = Document()
