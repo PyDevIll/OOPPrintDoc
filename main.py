@@ -10,13 +10,10 @@ class Document:
             printer.print_page(page)
 
 
+# Родительский класс - практически пустой и наверное не нужен теперь
 class Printer:
-    __consumable = ''
-    __kind = ''
-
-    def __init__(self, kind, consumable):
-        self.__kind = kind
-        self.__consumable = consumable
+    _consumable = ''
+    _kind = ''
 
     def print_page(self, page_txt:str):
         pass
@@ -24,20 +21,25 @@ class Printer:
 
 class InkjetPrinter(Printer):
     def __init__(self):
-        super().__init__("Inkjet", "black ink")
+        self._kind = "Inkjet"
+        self._consumable = "black ink"
 
-    def print_page(self, page_txt:str):
-        print(self.__kind + " printer uses " + self.__consumable + " to print:")
+    # Код в методах повторяется!
+    def print_page(self, page_txt: str):
+        print(self._kind + " printer uses " + self._consumable + " to print:")
         print(page_txt+"\n")
 
 
 class LaserPrinter(Printer):
     def __init__(self):
-        super().__init__("Laser", "black toner")
+        self._kind = "Laser"
+        self._consumable = "black toner"
 
-    def print_page(self, page_txt:str):
-        print(self.__kind + " printer uses " + self.__consumable + " to print:")
+    # Код в методах повторяется!
+    def print_page(self, page_txt: str):
+        print(self._kind + " printer uses " + self._consumable + " to print:")
         print(page_txt+"\n")
+
 
 def main():
     some_doc = Document()
