@@ -11,12 +11,6 @@ class Document:
 
 
 class Printer:
-    __consumable = ''
-    __kind = ''
-
-    def __init__(self, kind, consumable):
-        self.__kind = kind
-        self.__consumable = consumable
 
     # переопределяется наследниками
     def print_page(self, page_txt: str):
@@ -25,7 +19,7 @@ class Printer:
 
 class InkjetPrinter(Printer):
     def __init__(self):
-        super().__init__('Inkjet', 'black ink')
+        pass
 
     def print_page(self, page_txt: str):
         print("Inkjet printer outputs:")
@@ -34,7 +28,7 @@ class InkjetPrinter(Printer):
 
 class LaserPrinter(Printer):
     def __init__(self):
-        super().__init__('Laser', 'black toner')
+        pass
 
     def print_page(self, page_txt: str):
         print("Laser printer outputs:")
