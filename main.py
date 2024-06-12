@@ -11,28 +11,32 @@ class Document:
 
 
 class Printer:
-    # __consumable = ''
-    # __kind = ''
+    __consumable = ''
+    __kind = ''
 
-    # def __init__(self, kind, consumable):
-    #     self.__kind = kind
-    #     self.__consumable = consumable
+    def __init__(self, kind, consumable):
+        self.__kind = kind
+        self.__consumable = consumable
 
-    def print_page(self, page_txt:str):
+    # переопределяется наследниками
+    def print_page(self, page_txt: str):
         pass
 
 
 class InkjetPrinter(Printer):
+    def __init__(self):
+        super().__init__('Inkjet', 'black ink')
 
-    # Методы отличаются, но теперь не используют ничего из родительского класса
-    def print_page(self, page_txt:str):
+    def print_page(self, page_txt: str):
         print("Inkjet printer outputs:")
         print(page_txt+"\n")
 
 
 class LaserPrinter(Printer):
+    def __init__(self):
+        super().__init__('Laser', 'black toner')
 
-    def print_page(self, page_txt:str):
+    def print_page(self, page_txt: str):
         print("Laser printer outputs:")
         print(page_txt+"\n")
 
